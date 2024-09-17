@@ -1,12 +1,21 @@
 #include <Wire.h>
 #include <Adafruit_AHTX0.h>
 
+TwoWire i2c;
 Adafruit_AHTX0 aht;
+
+#define SCL_PIN 7
+#define SDA_PIN 9
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  if (!aht.begin())
+  if (!i2c.begin(, 9))
+  {
+    Serial.println("I2C is not initializing");
+    while(1);
+  }
+  if (!aht.begin(&i2c))
   {
     Serial.println("AHHHHHHHHHHHH");
     while(1);
