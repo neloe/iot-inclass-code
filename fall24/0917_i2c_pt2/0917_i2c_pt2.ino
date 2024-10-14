@@ -52,7 +52,7 @@ void loop() {
   Serial.println("----");*/
   oled.clearDisplay();
   oled.setCursor(0,0);
-  oled.printf("Temperature: %.2f deg C\n", temperature.temperature);
+  oled.printf("Temperature: %.2f deg F\n", temperature.temperature*9.0/5+32);
   oled.printf("Humidity: %.2f %%rH", humidity.relative_humidity);
   oled.display();
   delay(1000);
